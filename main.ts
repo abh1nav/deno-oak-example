@@ -1,4 +1,4 @@
-import { Application, Router, RouterContext } from "jsr:@oak/oak";
+import { Application, Router, RouterContext, send } from "jsr:@oak/oak";
 
 import { createUser, deleteUser, getUser } from "./db.ts";
 import { User } from "./types.ts";
@@ -33,6 +33,24 @@ router
     await deleteUser(userId);
     ctx.response.status = 204;
   });
+
+/** Static files **/
+router.get(
+  "/static/:path*",
+  async (context: RouterContext<"/static/:path*">) => {
+    const filePath = context.params.path;
+    console.log("File path: ", filePath);
+    try {
+      await send(context, filePath || "", {
+        root: `${Deno.cwd()}/public`,
+      });
+    } catch (err) {
+      console.error(err);
+      context.response.status = 404;
+      context.response.body = "Not found";
+    }
+  },
+);
 
 const app = new Application();
 

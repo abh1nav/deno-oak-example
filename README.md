@@ -44,3 +44,14 @@ curl -XDELETE "http://localhost:8080/users/0000"
 
 This will return a 204. This is a no-op if the user does not exist.
 
+Fetch static files:
+
+```shell
+curl -XGET "http://localhost:8080/static/index.html"
+```
+
+and
+
+```
+curl -XGET "http://localhost:8080/static/subfolder/index.html"
+```
