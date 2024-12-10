@@ -12,13 +12,13 @@ brew install deno
 deno install
 ```
 
-### Run server
+### 3. Run server
 
 ```shell
 deno run dev
 ```
 
-### Interact with server
+### 4. Interact with server
 
 Create a user:
 
