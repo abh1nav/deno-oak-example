@@ -15,7 +15,7 @@ deno install
 ### 3. Run server
 
 ```shell
-deno run dev
+deno run dev:server
 ```
 
 ### 4. Interact with server
@@ -55,3 +55,11 @@ and
 ```
 curl -XGET "http://localhost:8080/static/subfolder/index.html"
 ```
+
+### 5. Run client
+
+```shell
+deno run dev:client
+```
+
+In the browser, navigate to `http://localhost:3000`.
